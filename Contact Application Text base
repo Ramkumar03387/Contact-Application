@@ -1,85 +1,132 @@
-package example;
+package ramkumar;
 
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit; 
+import java.util.concurrent.TimeUnit;
 
-public class Test {
+public class TextBaseContactApplication {
 	// global variable
 	static byte i = 0;
 	static String name[] = new String[10];
 	static String phone_no[] = new String[10];
 
 	public static void main(String[] args) throws InterruptedException {
-		Test ob = new Test();
-		ob.run();
-
+		TextBaseContactApplication object = new TextBaseContactApplication();
+		object.run();
 	}
 
 	// method 1
 	public void run() throws InterruptedException {
-		System.out.println("App Instructions: " + "\n" + "if you enter the no 1 = then,create new contact" + "\n"
-				+ "if you enter the no 2 = last create mobi_lno and name visable " + "\n"
-				+ "if you enter the no 3 = deleate the contact no " + "\n"
-				+ "if you enter the no 4 = total contact list visible"+"\n"
-				+ "if you enter the no 5 = exit");
+		System.out.println("App Instructions: " + "\n"
+				+ "_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=__=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_");
+		System.out.println("if you enter the no 1 = then,create new contact" + "\t" + "\t" + "\t" + "\t" + "||" + "\n"
+				+ "if you enter the no 2 = last create mobil_no and name are visable " + "\t" + "||" + "\n"
+				+ "if you enter the no 3 = deleate the contact no " + "\t" + "\t" + "\t" + "\t" + "||" + "\n"
+				+ "if you enter the no 4 = total contact list visible" + "\t" + "\t" + "\t" + "||" + "\n"
+				+ "if you enter the no 5 = exit" + "\t" + "\t" + "\t" + "\t" + "\t" + "\t" + "||");
+		System.out.println("_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=__=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_");
 		Scanner sc = new Scanner(System.in);
-
+		System.out.println("===>>>please read the Instructions then continue the work for Application<<<=== ");
 		while (i <= name.length) {
+			System.out.println("enter the number: ");
 			String user = sc.next();
+			int a = 0;
 			switch (user) {
 			case "1": {
 				System.out.println("enter your name: ");
 				name[i] = sc.next();
 				System.out.println("enter your phone_no: ");
 				phone_no[i] = sc.next();
-				System.out.println("updating......");
-				TimeUnit.SECONDS.sleep(2);
-				System.out.println("contact successfully update!...");
-				System.out.println("__________________________________________");
-				i++;
+
+				for (short j = 0; j < i; j++) {
+					if (name[j].equals(name[i])) {
+						a++;
+						System.out.println(name[j] + " : This name is alredy enter please check the name!....");
+						break;
+					}
+					if (phone_no[j].equals(phone_no[i])) {
+						a++;
+						System.out.println(
+								phone_no[j] + " : This phone_no is alredy enter please check the phone_no!....");
+						break;
+					}
+				}
+				if (a == 0) {
+					System.out.println("updating......");
+					TimeUnit.SECONDS.sleep(2);
+					System.out.println(
+							"_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+					System.out.println(i + 1 + ") contact successfully update!...");
+					System.out.println(
+							"_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+					i++;
+
+				}
 				break;
 			}
 			case "2": {
-				System.out.println("contact name :" + name[i - 1] + "\n" + "contact phone_no :" + phone_no[i - 1]);
+				if (i != 0) {
+					System.out.println("last saved contact....");
+					System.out.println("______________________");
+					System.out.println("contact name :" + name[i - 1] + "\n" + "contact phone_no :" + phone_no[i - 1]);
+				} else {
+					System.out.println("no saved contacts yat,add the new contact!");
+				}
 				break;
 			}
 			case "3": {
-				System.out.println("enter your deleate contact name: ");
-				String input = sc.next();
-				byte n = 0;
-				while (n < i + 1) {
+				if (i != 0) {
+					System.out.println("enter your deleate contact name: ");
+					String input = sc.next();
+					byte n = 0;
+					while (n < i + 1) {
 
-					if (input.equals(name[n])) {
-						name[n] = null;
-						phone_no[n] = null;
-						for (byte j = 0; j < i; j++) {
-							if (name[j] != null && phone_no[j] != null) {
-								System.out.println("Loading.......");
-								TimeUnit.SECONDS.sleep(2);
-								System.out.println(j + 1 + ")" + name[j] + " : " + phone_no[j]);
-								System.out.println("contact successfully deleate!.. ");
-								System.out.println("__________________________________________");
+						if (input.equals(name[n])) {
+							name[n] = null;
+							phone_no[n] = null;
+							for (byte j = 0; j < i; j++) {
+								if (name[j] != null && phone_no[j] != null) {
+									System.out.println("Loading.......");
+									TimeUnit.SECONDS.sleep(2);
+									System.out.println(j + 1 + ")" + name[j] + " : " + phone_no[j]);
+									System.out.println(
+											"_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+									System.out.println("contact successfully deleate!.. ");
+									System.out.println(
+											"_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+									i=(byte) (i-1);
+									break;}
 							}
 						}
+						n++;
 					}
-					n++;
+					
+				} else {
+					System.out.println("please cheack no contact no yet..");
 				}
 				break;
 			}
 			case "4": {
+				System.out.println("Your contact List:");
 				try {
-					for (byte j = 0; j < i; j++)
-						if (name[j] != null && phone_no[j] != null)
-							System.out.println(j + 1 + ")" + name[j] + " : " + phone_no[j]);
-					System.out.println("__________________________________________");
+					if (i != 0) {
+						for (byte j = 0; j < i; j++)
+							if (name[j] != null && phone_no[j] != null)
+								System.out.println(j + 1 + ")" + name[j] + " : " + phone_no[j]);
+						System.out.println(
+								"_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+					} else {
+						System.out.println("no contact number saved please check!.. ");
+					}
 					break;
 				} catch (ArrayIndexOutOfBoundsException e) {
 					System.out.println("check  the length");
 				}
 			}
 			case "5": {
+				System.out.println("=================================================");
 				System.out.println("Thankyou!");
-				i=(byte) (name.length+1);
+				System.out.println("=================================================");
+				i = (byte) (name.length + 1);
 			}
 			}
 		}
